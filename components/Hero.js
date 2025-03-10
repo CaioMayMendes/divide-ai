@@ -100,7 +100,7 @@ export default function Hero() {
   return (
     <div className="py-4 md:py-10 flex flex-col gap-8 sm:gap-10 md:gap-14 items-center">
       {isListing ? (
-        <div className="flex justify-center items-center h-full">
+        <div className="justify-center items-center w-full p-3">
           <List data={listData}/>
         </div>
       ) : (

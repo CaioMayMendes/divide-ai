@@ -1,15 +1,30 @@
 import React from "react";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+  } from "@/components/ui/accordion"
 
 export default function List(props) {
     const { data } = props;
-  
+    console.log(data)
     return (
-      <div className="py-4 md:py-10 flex flex-col gap-8 sm:gap-10 md:gap-14 items-center">
-        {data.map((item, index) => (
-          <div key={index} className="p-4 border rounded-lg shadow-md">
-            {item.nome}
-          </div>
-        ))}
-      </div>
+        <div className="space-y-4 w-full">
+            {data.map((item, index) => (
+                <Accordion key={index} type="single" collapsible className={"w-full border border-black rounded-lg shadow-md bg-grey"}>
+                    <AccordionItem value={item.nome} >
+                        <AccordionTrigger className={"p-4"}>{item.nome}</AccordionTrigger>
+                        {item.items.map((subItem, subIndex) => (
+                            <>
+                            <AccordionContent key={subIndex} className={"w-full pl-2"}>
+                            {subItem.nome_item}/{subItem.valor}
+                            </AccordionContent>
+                            </>
+                        ))}
+                    </AccordionItem>
+                </Accordion>
+            ))}
+        </div>
     );
 }
