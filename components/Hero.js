@@ -96,12 +96,21 @@ export default function Hero() {
       setIsSending(false);
     }
   };
+
+  const resetProcess = () => {
+    setIsRecording(false)
+    setAudioUrl(null)
+    setAudioBlob(null)
+    setIsSending(false)
+    setIsListing(false)
+    setListData([])
+  }
   
   return (
     <div className="py-4 md:py-10 flex flex-col gap-8 sm:gap-10 md:gap-14 items-center">
       {isListing ? (
         <div className="justify-center items-center w-full p-3">
-          <List data={listData}/>
+          <List data={listData} resetProcess={resetProcess}/>
         </div>
       ) : (
         <>
